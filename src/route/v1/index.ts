@@ -27,7 +27,7 @@ router.get('/', (req: express.Request, res: express.Response) => {
 // });
 
 router.get('/favorites/:userId', (req: express.Request, res: express.Response) => {
-  twitter.get('favorites/list', { user_id: req.params.userId }, (error: Error, data: any) => {
+  twitter.get('favorites/list', { screen_name: req.params.userId }, (error: Error, data: any) => {
     if (error) {
       res.send(error);
     } else {
