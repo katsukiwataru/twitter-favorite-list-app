@@ -16,16 +16,6 @@ router.get('/', (req: express.Request, res: express.Response) => {
   res.send('server is up');
 });
 
-// router.get('/trends', (req: express.Request, res: express.Response) => {
-//   twitter.get('trends/available', (error: any, result: any) => {
-//     if (error) {
-//       res.send(error);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// });
-
 router.get('/favorites/:userId', (req: express.Request, res: express.Response) => {
   twitter.get('favorites/list', { screen_name: req.params.userId }, (error: Error, data: any) => {
     if (error) {
