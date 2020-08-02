@@ -4,12 +4,12 @@
   "description": "twitter app",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/index.ts",
-    "dev:watch": "ts-node-dev --respawn src/index.ts",
-    "clean": "rimraf dist/*",
+    "dev": "ts-node -r dotenv/config src/index.ts",
+    "dev:watch": "ts-node-dev -r dotenv/config --respawn src/index.ts",
     "tsc": "tsc",
+    "clean": "rimraf dist/*",
     "build": "npm-run-all clean tsc",
-    "start": "node ."
+    "start": "node -r dotenv/config .dist/index.js"
   },
   "repository": {
     "type": "git",
