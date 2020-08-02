@@ -1,16 +1,7 @@
 import express from 'express';
-import Twitter from 'twitter';
-import { config } from 'dotenv';
-config();
+import { twitter } from '../..';
 
 export const router = express.Router();
-
-const twitter = new Twitter({
-  consumer_key: process.env.API_KEY as string,
-  consumer_secret: process.env.API_SECRET_KEY as string,
-  access_token_key: process.env.ACCESS_TOKEN as string,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET as string,
-});
 
 router.get('/', (req: express.Request, res: express.Response) => {
   res.send('server is up');
