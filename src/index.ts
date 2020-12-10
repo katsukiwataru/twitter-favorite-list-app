@@ -5,6 +5,20 @@ import { router } from './route/v1';
 const app: express.Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://192.168.10.8:3000');
+  // https://192.168.10.8:3000
+  // https://172.20.0.109:3000
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Credentials');
+
+  if ('OPTIONS' == req.method) {
+    res.send(204);
+  } else {
+    next();
+  }
+});
 
 const port = process.env.PORT || 3000;
 
