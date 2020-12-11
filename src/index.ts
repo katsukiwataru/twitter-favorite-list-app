@@ -1,6 +1,4 @@
 import express from 'express';
-import fs from 'fs';
-import https from 'https';
 import Twitter from 'twitter';
 import { router } from './route/v1';
 
@@ -9,7 +7,8 @@ const app: express.Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://katsukiwataru.github.io');
+  // res.header('Access-Control-Allow-Origin', 'https://katsukiwataru.github.io');
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
   res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Credentials');
@@ -25,16 +24,7 @@ const port = process.env.PORT || 3000;
 
 app.use('/api/v1/', router);
 // eslint-disable-next-line no-console
-// app.listen(port, () => console.log('listen on port ' + port));
-
-const option = {
-  key: fs.readFileSync('./certs/key.pem'),
-  cert: fs.readFileSync('./certs/cert.pem'),
-};
-
-const server = https.createServer(option, app);
-
-server.listen(port);
+app.listen(port, () => console.log('listen on port ' + port));
 
 export const twitter = new Twitter({
   consumer_key: process.env.API_KEY as string,

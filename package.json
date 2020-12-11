@@ -22,13 +22,11 @@
   },
   "homepage": "https://github.com/katsukiwataru/twitter-app#readme",
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.9",
     "@types/express": "^4.17.6",
     "@types/node": "^14.0.14",
     "@types/twitter": "^1.7.0",
