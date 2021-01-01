@@ -17,7 +17,7 @@ router.get('/users/', (req: express.Request, res: express.Response) => {
   });
 });
 
-router.get('/favorites', (req: express.Request, res: express.Response) => {
+router.get('/favorites/', (req: express.Request, res: express.Response) => {
   twitter.get('favorites/list', { screen_name: req.query.screenName }, (error: Error, data: any) => {
     if (error) {
       res.send(error);

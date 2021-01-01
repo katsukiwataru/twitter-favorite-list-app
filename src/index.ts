@@ -13,6 +13,10 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Credentials');
+  // res.set('Cache-Control', 'public, max-age=86400');
+  res.set('Cache-Control', 'no-cache');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '86400');
 
   if ('OPTIONS' == req.method) {
     res.send(204);
