@@ -31,14 +31,17 @@ app.use('/api/v1/', router);
 // eslint-disable-next-line no-console
 // app.listen(port, () => console.log('listen on port ' + port));
 
-const option = {
-  key: fs.readFileSync('./certs/key.pem'),
-  cert: fs.readFileSync('./certs/cert.pem'),
-};
+if (process.env.MODE === 'develop') {
+  const option = {
+    key: fs.readFileSync('./certs/key.pem'),
+    cert: fs.readFileSync('./certs/cert.pem'),
+  };
 
-const server = https.createServer(option, app);
-
-server.listen(port);
+  const server = https.createServer(option, app);
+  server.listen(port);
+} else {
+  app.listen();
+}
 
 export const twitter = new Twitter({
   consumer_key: process.env.API_KEY as string,
