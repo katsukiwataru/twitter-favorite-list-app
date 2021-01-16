@@ -10,7 +10,7 @@
     "tsc": "tsc",
     "clean": "rimraf dist/*",
     "build": "npm-run-all clean tsc",
-    "start": "npm build && node -r dotenv/config .dist/index.js"
+    "start": "npm run build && node -r dotenv/config .dist/index.js"
   },
   "repository": {
     "type": "git",
