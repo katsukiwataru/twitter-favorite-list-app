@@ -31,8 +31,6 @@ app.use('/api/v1/', router);
 // eslint-disable-next-line no-console
 // app.listen(port, () => console.log('listen on port ' + port));
 
-console.log(process.env.PORT);
-
 if (process.env.DEV_MODE === 'develop') {
   const option = {
     key: fs.readFileSync('./certs/key.pem'),
